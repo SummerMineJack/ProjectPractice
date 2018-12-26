@@ -1,0 +1,42 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>PHP Email</title>
+    <style>
+        label {
+            color: red;
+        }
+    </style>
+    <script>
+        function checkEmail() {
+            var reg = new RegExp("^[a-z0-9]+([._\\-]*[a-z0-9])*@([a-z0-9]+[-a-z0-9]*[a-z0-9]+.){1,63}[a-z0-9]+$");
+            var email = document.getElementById("useremails");
+            var error = document.getElementById("lable");
+            if (email.value == "") { //输入不能为空
+                error.hidden = false;
+                error.innerText = "输入不能为空!";
+                return false;
+            } else if (!reg.test(email.value)) { //正则验证不通过，格式不对
+                error.hidden = false;
+                error.innerText = "验证不通过!";
+                return false;
+            } else {
+                error.hidden = true;
+                return true;
+            }
+        }
+    </script>
+</head>
+<body>
+<form action="Emailtest.php" method="post">
+    <label>To:</label><input type="email" id="useremails" name="ReceiveEmail" onblur="checkEmail()"
+                             placeholder="请输入邮箱地址"><label id="lable" hidden="hidden"></label><br>
+    <label>subject:</label><input type="text" name="subject"><br>
+    <label>message:</label><input type="text" name="message"><br>
+    <input type="submit" name="submit" value="发送">
+</form>
+</body>
+</html>
