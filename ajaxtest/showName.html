@@ -1,0 +1,35 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>PHP Ajax</title>
+    <script>
+        function showHit(str) {
+            if (str.length == 0) {
+                document.getElementById("callbackReault").innerText = "";
+                return;
+            }
+            if (window.XMLHttpRequest) {
+                xmlhttp = new XMLHttpRequest();
+            } else {
+                xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+            }
+            xmlhttp.onreadystatechange = function () {
+                if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                    document.getElementById("callbackReault").innerHTML = xmlhttp.responseText;
+                }
+            }
+            xmlhttp.open("GET", "AjaxPhp.php?q=" + str, true);
+            xmlhttp.send();
+        }
+    </script>
+</head>
+<body>
+<form>
+    姓名：<input type="text" onkeyup="showHit(this.value)">
+</form>
+<p>Ajax返回值：<span id="callbackReault"></span></p>
+</body>
+</html>

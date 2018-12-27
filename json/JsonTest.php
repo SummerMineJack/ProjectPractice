@@ -9,15 +9,20 @@
 $arrays = array("a" => 1, "b" => 2, "c" => 3, "d" => 4, "e" => 5);
 //echo json_encode($arrays);
 //将对象转换成json
-class User{
+class User {
     var $userName;
     var $userId;
     var $userNickName;
     var $userPhoneNumber;
 }
-$users=new User();
-$users->userName="HuangJian";
-$users->userId="97603";
-$users->userNickName="SummerMineJack";
-$users->userPhoneNumber="15871490754";
-echo json_encode($users);
+
+$users = new User();
+$users->userName = "HuangJian";
+$users->userId = "97603";
+$users->userNickName = "SummerMineJack";
+$users->userPhoneNumber = "15871490754";
+$jsonEncode = json_encode($users);
+echo "json_encdoe：" . $jsonEncode;
+$newStuden = json_decode($jsonEncode, false);
+print PHP_EOL;
+echo "json_decode：" . $newStuden->userPhoneNumber;
