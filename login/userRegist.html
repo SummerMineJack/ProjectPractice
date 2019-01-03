@@ -5,13 +5,29 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>注册</title>
+    <script>
+        function checkUserName() {
+            var userName = document.getElementById("UserName");
+            var error = document.getElementById("lable");
+            if (userName.value == "") {
+                error.hidden = false;
+                error.innerText = "用户名不可为空";
+            }
+        }
+    </script>
+    <style>
+        label {
+            color: red;
+        }
+    </style>
 </head>
 <body>
 <form action="userRegist.php" method="post">
-    用户名：<input type="text" name="UserName"><br>
+    用户名：<input type="text" name="UserName" id="UserName" onblur="checkUserName()"><label id="lable"
+                                                                                         hidden="hidden"></label><br>
     密　码：<input type="password" name="UserPassword"><br>
     确认密码：<input type="password" name="ConformUserPassword"><br>
-    <input type="submit" value="注册">
+    <input type="submit" value="注册" disabled="disabled">
 </form>
 
 </body>
