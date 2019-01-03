@@ -5,16 +5,6 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>注册</title>
-    <script>
-        function checkUserName() {
-            var userName = document.getElementById("UserName");
-            var error = document.getElementById("lable");
-            if (userName.value == "") {
-                error.hidden = false;
-                error.innerText = "用户名不可为空";
-            }
-        }
-    </script>
     <style>
         label {
             color: red;
@@ -22,13 +12,80 @@
     </style>
 </head>
 <body>
-<form action="userRegist.php" method="post">
-    用户名：<input type="text" name="UserName" id="UserName" onblur="checkUserName()"><label id="lable"
-                                                                                         hidden="hidden"></label><br>
-    密　码：<input type="password" name="UserPassword"><br>
-    确认密码：<input type="password" name="ConformUserPassword"><br>
-    <input type="submit" value="注册" disabled="disabled">
-</form>
+<form action="userRegist.php" method="post" onsubmit="return checkFormCreate()">
+    用户名：<input type="text" name="UserName" id="UserName" onblur="checkUserName()">
+    <label id="usernamelable" hidden="hidden"></label><br>
 
+    密　码：<input type="password" name="UserPassword" id="UserPassword" onblur="checkUserPwd()">
+    <label id="userpwd" hidden="hidden"></label><br>
+
+    确认密码：<input type="password" id="ConformUserPassword" name="ConformUserPassword" onblur="checkPwdAgain()">
+    <label id="userpwdagein" hidden="hidden"></label><br>
+
+    <input type="submit" value="注册">
+</form>
+<script>
+    /*用户名检测*/
+    function checkUserName() {
+        var UserName = document.getElementById("UserName").value;
+        if (!UserName) { //用户框value值为空
+            document.getElementById("usernamelable").hidden = false;
+            document.getElementById("usernamelable").innerHTML = "请输入用户名！";
+        } else { //用户框value值不为空
+            document.getElementById("usernamelable").hidden = true;
+        }
+    }
+
+    /*密码检测*/
+    function checkUserPwd() {
+        var UserPassword = document.getElementById("UserPassword").value;
+        if (!UserPassword) { //用户框value值为空
+            document.getElementById("userpwd").hidden = false;
+            document.getElementById("userpwd").innerHTML = "请输入密码！";
+        } else { //用户框value值不为空
+            document.getElementById("userpwd").hidden = true;
+        }
+    }
+
+    /*密码检验*/
+    function checkPwdAgain() {
+        var ConformUserPassword = document.getElementById("ConformUserPassword").value;
+        var UserPassword = document.getElementById("UserPassword").value;
+        if (!ConformUserPassword) { //用户框value值为空
+            document.getElementById("userpwdagein").hidden = false;
+            document.getElementById("userpwdagein").innerHTML = "请确认密码";
+        } else { //用户框value值不为空
+            if (ConformUserPassword == UserPassword) {
+                document.getElementById("userpwdagein").hidden = true;
+            } else {
+                document.getElementById("userpwdagein").hidden = false;
+                document.getElementById("userpwdagein").innerHTML = "密码不一致";
+            }
+        }
+    }
+
+    function checkFormCreate() {
+        var UserName = document.getElementById("UserName").value;
+        var UserPassword = document.getElementById("UserPassword").value;
+        var ConformUserPassword = document.getElementById("ConformUserPassword").value;
+        if (!UserName && !UserPassword && !ConformUserPassword) { //用户框value值和密码框value值都为空
+            document.getElementById("usernamelable").hidden = false;
+            document.getElementById("usernamelable").innerHTML = "请输入用户名！";
+            document.getElementById("userpwd").hidden = false;
+            document.getElementById("userpwd").innerHTML = "请输入密码！"
+            document.getElementById("userpwdagein").hidden = false;
+            document.getElementById("userpwdagein").innerHTML = "密码不一致";
+            return false; //只有返回true表单才会提交
+        } else if (!UserName) { //用户框value值为空
+            document.getElementById("usernamelable").hidden = false;
+            document.getElementById("usernamelable").innerHTML = "请输入用户名！";
+            return false;
+        } else if (!UserPassword) { //密码框value值为空
+            document.getElementById("userpwd").hidden = false;
+            document.getElementById("userpwd").innerHTML = "请输入密码！"
+            return false;
+        }
+    }
+</script>
 </body>
 </html>
