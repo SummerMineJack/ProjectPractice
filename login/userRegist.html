@@ -63,29 +63,6 @@
             }
         }
     }
-
-    function checkFormCreate() {
-        var UserName = document.getElementById("UserName").value;
-        var UserPassword = document.getElementById("UserPassword").value;
-        var ConformUserPassword = document.getElementById("ConformUserPassword").value;
-        if (!UserName && !UserPassword && !ConformUserPassword) { //用户框value值和密码框value值都为空
-            document.getElementById("usernamelable").hidden = false;
-            document.getElementById("usernamelable").innerHTML = "请输入用户名！";
-            document.getElementById("userpwd").hidden = false;
-            document.getElementById("userpwd").innerHTML = "请输入密码！"
-            document.getElementById("userpwdagein").hidden = false;
-            document.getElementById("userpwdagein").innerHTML = "密码不一致";
-            return false; //只有返回true表单才会提交
-        } else if (!UserName) { //用户框value值为空
-            document.getElementById("usernamelable").hidden = false;
-            document.getElementById("usernamelable").innerHTML = "请输入用户名！";
-            return false;
-        } else if (!UserPassword) { //密码框value值为空
-            document.getElementById("userpwd").hidden = false;
-            document.getElementById("userpwd").innerHTML = "请输入密码！"
-            return false;
-        }
-    }
-</script>
+s</script>
 </body>
 </html>

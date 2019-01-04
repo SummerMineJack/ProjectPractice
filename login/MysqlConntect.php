@@ -18,8 +18,24 @@ class mysqlConntect {
      * 插入
      */
     public function insertValue($table, $data) {
-        $sql = "insert into" . $table . " (username,userpwd) values ('{$data['username']}','{$data['userpwd']}')";
-        $this->mysqli->query($sql);
-        return $this->mysqli->insert_id;
+        $sql = "insert into " . $table . " values (0, '{$data['username']}','{$data['userpwd']}')";
+        if ($this->mysqli->query($sql) === TRUE) {
+            return 1;
+        } else {
+            return $this->mysqli->error;
+        }
+    }
+
+    /**
+     * 查询
+     */
+    public function selValue($table, $username, $userpwd) {
+        $sql = "select id from $table where username='$username' and userpwd='$userpwd'";
+        if ($this->mysqli->query($sql) === TRUE) {
+            echo "查询";
+            return 1;
+        } else {
+            return $this->mysqli->error;
+        }
     }
 }

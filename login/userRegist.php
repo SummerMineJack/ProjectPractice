@@ -10,4 +10,14 @@ $mysql = new mysqlConntect();
 $mysql->conntct();
 
 $username = $_POST['UserName'];
-$userpdw = $_POST['UserPassword'];
+$userPwd = $_POST['UserPassword'];
+$conformUserPwd = $_POST['ConformUserPassword'];
+$data = array("username" => $username, "userpwd" => $userPwd);
+print_r($data);
+$reslutid = $mysql->insertValue("userinfo", $data);
+if ($reslutid != 0) {
+    echo "注册成功";
+    header("Location:userLogin.html?" . $username);
+} else {
+    echo "注册失败" . $reslutid;
+}
