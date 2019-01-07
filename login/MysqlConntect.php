@@ -31,11 +31,20 @@ class mysqlConntect {
      */
     public function selValue($table, $username, $userpwd) {
         $sql = "select id from $table where username='$username' and userpwd='$userpwd'";
-        if ($this->mysqli->query($sql) === TRUE) {
-            echo "查询";
+        $result = $this->mysqli->query($sql);
+        $number = mysqli_num_rows($result);
+        if ($number) {
             return 1;
         } else {
-            return $this->mysqli->error;
+            return 0;
         }
+
+    }
+
+    /**
+     * 关闭数据库连接
+     */
+    public function closeDBconnect() {
+        $this->mysqli->close();
     }
 }
