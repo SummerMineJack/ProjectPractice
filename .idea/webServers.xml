@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="68791820-b061-4b83-9a36-fb203be4d59a" name="LocalHost" url="http://www.huangjian.com">
+        <fileTransfer port="0" mountedRoot="D:\eclipse\WebServerWorkSpace\ProjectPractice" accessType="MOUNT" />
+      </webServer>
+    </option>
+  </component>
+</project>
