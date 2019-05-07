@@ -1,4 +1,27 @@
-<!DOCTYPE html>
+<?php
+/* Smarty version 3.1.33, created on 2019-05-07 10:42:13
+  from 'D:\RnWorkSpace\PhpProject\ProjectPractice\Smarty\html\login.html' */
+
+/* @var Smarty_Internal_Template $_smarty_tpl */
+if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
+  'version' => '3.1.33',
+  'unifunc' => 'content_5cd144e5610cd2_09730805',
+  'has_nocache_code' => false,
+  'file_dependency' => 
+  array (
+    '7002253bc184034ad36ea8b365afd983aac918e4' => 
+    array (
+      0 => 'D:\\RnWorkSpace\\PhpProject\\ProjectPractice\\Smarty\\html\\login.html',
+      1 => 1557218532,
+      2 => 'file',
+    ),
+  ),
+  'includes' => 
+  array (
+  ),
+),false)) {
+function content_5cd144e5610cd2_09730805 (Smarty_Internal_Template $_smarty_tpl) {
+?><!DOCTYPE html>
 <!--[if lt IE 7 ]>
 <html lang="en" class="no-js ie6 lt8"> <![endif]-->
 <!--[if IE 7 ]>
@@ -11,11 +34,12 @@
 <html lang="zh" class="no-js"> <!--<![endif]-->
 <head>
     <meta charset="UTF-8"/>
+    <title>登录</title>
     <!-- <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">  -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="./css/demo.css"/>
-    <link rel="stylesheet" type="text/css" href="./css/style.css"/>
-    <link rel="stylesheet" type="text/css" href="./css/animate-custom.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/demo.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/style.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/animate-custom.css"/>
 </head>
 <body>
 <div class="container">
@@ -32,7 +56,8 @@
                         <h1>Log in</h1>
                         <p>
                             <label for="username" class="uname" data-icon="u"> Your email or username </label>
-                            <input id="username" name="username" required="required" type="text" value="{$username}"
+                            <input id="username" name="username" required="required" type="text" value="<?php echo $_smarty_tpl->tpl_vars['username']->value;?>
+"
                                    placeholder="myusername or mymail@mail.com"/>
                         </p>
                         <p>
@@ -93,4 +118,5 @@
     </section>
 </div>
 </body>
-</html>
+</html><?php }
+}

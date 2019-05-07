@@ -6,18 +6,23 @@
  * Date: 2018/12/27
  * Time: 20:36
  */
-class mysqlConntect {
+class mysqlConntect
+{
     private $mysqli;
     private $result;
 
-    public function conntct() {
-        $this->mysqli = new mysqli("localhost", "root", "hj1649789..", "userinfo", "3306");
+    public function conntct()
+    {
+//        $this->mysqli = new mysqli("localhost", "root", "hj1649789..", "userinfo", "3306");
+        $this->mysqli = new mysqli("localhost", "root", "hj1649789..", "userinfo", "8809");
+
     }
 
     /**
      * 插入
      */
-    public function insertValue($table, $data) {
+    public function insertValue($table, $data)
+    {
         $sql = "insert into " . $table . " values (0, '{$data['username']}','{$data['userpassword']}','{$data['useremail']}')";
         if ($this->mysqli->query($sql) === TRUE) {
             return 1;
@@ -27,9 +32,24 @@ class mysqlConntect {
     }
 
     /**
+     * 查询所有用户信息
+     */
+    public function selAll()
+    {
+        $sql = "select * from userinfo";
+        $result = $this->mysqli->query($sql);
+        if ($result == true) {
+            return $result;
+        } else {
+            return null;
+        }
+    }
+
+    /**
      * 查询
      */
-    public function selValue($table, $username, $userpwd) {
+    public function selValue($table, $username, $userpwd)
+    {
         $sql = "select id from $table where username='$username' and userpwd='$userpwd'";
         $result = $this->mysqli->query($sql);
         $number = mysqli_num_rows($result);
@@ -44,7 +64,8 @@ class mysqlConntect {
     /**
      * 关闭数据库连接
      */
-    public function closeDBconnect() {
+    public function closeDBconnect()
+    {
         $this->mysqli->close();
     }
 }
