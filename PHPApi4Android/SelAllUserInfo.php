@@ -20,6 +20,7 @@ while ($row = mysqli_fetch_row($result)) {
     $userbean->userName = $row[1];
     $userbean->userPassword = $row[2];
     $userbean->userEmail = $row[3];
+    $userbean->token=md5($userbean->userName.$userbean->userPassword."ceshi");
     $rows[] = $userbean;
 }
 if (!empty($rows)) {

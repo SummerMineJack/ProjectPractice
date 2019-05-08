@@ -6,6 +6,7 @@ class UserBean
     var $userName;
     var $userPassword;
     var $userEmail;
+    var $token;
 
     /**
      * UserBean constructor.
@@ -13,6 +14,23 @@ class UserBean
     public function __construct()
     {
     }
+
+    /**
+     * @return mixed
+     */
+    public function getToken()
+    {
+        return $this->token;
+    }
+
+    /**
+     * @param mixed $token
+     */
+    public function setToken($token): void
+    {
+        $this->token = $token;
+    }
+
 
     /**
      * @return mixed
