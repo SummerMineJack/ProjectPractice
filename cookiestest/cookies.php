@@ -5,8 +5,8 @@
  * Date: 2018/12/26
  * Time: 13:49
  */
-$exprit = time() + 60 * 60 * 24 * 30;
-setcookie("user", "HuangJian", $exprit);
+$exprit = time() + 10;
+setcookie("user", "HuangJian", $exprit, "/", "www.huangjian.com", true, true);
 ?>
 <html>
 <head>
