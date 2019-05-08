@@ -10,7 +10,7 @@
 <body>
 
 
-<form action="ArrayList.php">
+<form action="../ArrayList.php">
     <input type="datetime-local"><br>
     <input type="date"><br>
 </form>

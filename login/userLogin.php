@@ -12,8 +12,8 @@ $mysql->conntct();
 
 $loginUserName = $_POST['username'];
 $loginUserPwd = $_POST['userpwd'];
-$resultid = $mysql->selValue("userinfo", $loginUserName, $loginUserPwd);
-if ($resultid != 0) {
+$result= $mysql->selValue("userinfo", $loginUserName, $loginUserPwd);
+if (mysqli_num_rows($result)) {
     setcookie("user", $loginUserName);
 }
 if (isset($_COOKIE["user"]))

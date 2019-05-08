@@ -13,11 +13,10 @@ $username = $_POST['UserName'];
 $userPwd = $_POST['UserPassword'];
 $conformUserPwd = $_POST['ConformUserPassword'];
 $data = array("username" => $username, "userpwd" => $userPwd);
-print_r($data);
-$reslutid = $mysql->insertValue("userinfo", $data);
-if ($reslutid != 0) {
+$result = $mysql->insertValue("userinfo", $data);
+if (mysqli_num_rows($result)) {
     echo "注册成功";
     header("Location:userLogin.html?" . $username);
 } else {
-    echo "注册失败" . $reslutid;
+    echo "注册失败" . $result;
 }

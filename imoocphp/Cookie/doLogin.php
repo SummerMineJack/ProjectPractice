@@ -5,8 +5,8 @@
  * Date: 2019/5/8
  * Time: 14:58
  */
-require "imoocMysqlConn.php";
-$connt = new imoocMysqlConn();
+require "../login/MysqlConntect.php";
+$connt = new mysqlConntect();
 $connt->conntct();
 $username = $_POST['username'];
 $password = md5($_POST['userpwd']);
