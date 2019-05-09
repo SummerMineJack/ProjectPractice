@@ -13,7 +13,10 @@ class mysqlConntect
 
     public function conntct()
     {
-        $this->mysqli = new mysqli("localhost", "root", "hj1649789..", "userinfo", "3306");
+        $this->mysqli=mysqli_connect("localhost", "root", "hj1649789..", "userinfo", "8809");
+
+//        $this->mysqli = new mysqli("localhost", "root", "hj1649789..", "userinfo", "3306");//家的端口号
+
     }
 
     /**
@@ -32,7 +35,8 @@ class mysqlConntect
      */
     public function sel4Sql($sql)
     {
-        return $result = $this->mysqli->query($sql);
+        $result = $this->mysqli->query($sql);
+        return $result;
     }
 
     /**
@@ -41,7 +45,8 @@ class mysqlConntect
     public function selValue($table, $username, $userpwd)
     {
         $sql = "select id from $table where username='$username' and userpassword='$userpwd'";
-        return $result = $this->mysqli->query($sql);
+        $result = $this->mysqli->query($sql);
+        return $result;
     }
 
     /**
