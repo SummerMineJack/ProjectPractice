@@ -13,7 +13,7 @@ class Calendar {
     }
     function out(){
         echo '<table align="center">';
-        $this->chageDate("test.php");
+        $this->chageDate("echoAjax.php");
         $this->weeksList();
         $this->daysList();
         echo '</table>';
