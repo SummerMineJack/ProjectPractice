@@ -7,7 +7,7 @@
  */
 session_start();
 require "../../login/MysqlConntect.php";
-$connt = new mysqlConntect();
+$connt = mysqlConntect::getInstance();
 $connt->conntct();
 $username = isset($_POST['username']) ? $_POST['username'] : "";
 $password = isset($_POST['userpwd']) ? md5($_POST['userpwd']) : "";

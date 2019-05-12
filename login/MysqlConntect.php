@@ -13,7 +13,8 @@ class mysqlConntect
     private static $user = 'root';
     private static $password = 'hj1649789..';
     private static $database = 'userinfo';
-    private static $port = '8809';
+//    private static $port = '8809';
+    private static $port = '3306';
     private static $instance;
 
     private function __construct()
@@ -58,6 +59,11 @@ class mysqlConntect
             echo "错误信息" . mysqli_error($this->mysqli) . "<br>";
             exit;
         }
+    }
+
+    public function getCharset()
+    {
+        return mysqli_get_charset($this->mysqli);
     }
 
     /**
