@@ -12,7 +12,7 @@ header("Content-Type:image/png");
  * @param int $height 验证码高度
  * @param int $length 验证码长度
  */
-function genrateverify($type = 3, $width = 200, $height = 50, $length = 4)
+function genrateverifys($type = 3, $width = 200, $height = 50, $length = 4)
 {
     $image = imagecreatetruecolor($width, $height);
     $white = imagecolorallocate($image, 255, 255, 255);
@@ -36,9 +36,12 @@ function genrateverify($type = 3, $width = 200, $height = 50, $length = 4)
             $str = join('', array_rand(array_flip(array_merge(range(0, 9), range('a', 'z'), range('A', 'Z'))), $length));
             break;
         case 4:
-            $str = join('', array_rand(explode($strArr), $length));
+            $str = join('', array_rand(array_flip(explode(',', $strArr)), $length));
             break;
     }
+    $fontFlie = 'C:/Windows/Fonts/HYC5GFM.TTF';
+    /*echo '高度'.imagefontheight(32).'宽度'.imagefontwidth(32);
+    exit();*/
 
     /**
      * 干扰线
@@ -50,7 +53,9 @@ function genrateverify($type = 3, $width = 200, $height = 50, $length = 4)
      * 将上面随机获取的文字内容画到画布上【注意：imagettftext这个方法最好还是使用本地盘符里面的字体，将字体放在本地文件夹中为何不生效，还不得而知】
      */
     for ($i = 0; $i < $length; $i++) {
-        imagettftext($image, 32, mt_rand(-30, 30), $i * ($width / $length), mt_rand($height - 15, 35), randcolor($image), 'C:/Windows/Fonts/alger.ttf', $str[$i]);
+        $x = 20 + ceil($width / $length) * $i;
+        $y = mt_rand(ceil($height / 3), $height - 15);
+        imagettftext($image, 32, mt_rand(-30, 30), $x, $y, randcolor($image), $fontFlie, $str[$i]);
     }
     /**
      * 绘制干扰点
