@@ -14,7 +14,7 @@
     <input type="password" name="userpwd" placeholder="密  码"><br>
     <label>验证码</label>
     <input type="text" name="verify"><br>
-    <img src="code.php"><br>
+    <img src="../gdlib/verifycode/code.php"><br>
     <input type="submit" value="提交">
 </form>
 
