@@ -39,10 +39,6 @@ function genrateverifys($type = 3, $width = 200, $height = 50, $length = 4)
             $str = join('', array_rand(array_flip(explode(',', $strArr)), $length));
             break;
     }
-    $fontFlie = 'C:/Windows/Fonts/HYC5GFM.TTF';
-    /*echo '高度'.imagefontheight(32).'宽度'.imagefontwidth(32);
-    exit();*/
-
     /**
      * 干扰线
      */
@@ -53,10 +49,17 @@ function genrateverifys($type = 3, $width = 200, $height = 50, $length = 4)
      * 将上面随机获取的文字内容画到画布上【注意：imagettftext这个方法最好还是使用本地盘符里面的字体，将字体放在本地文件夹中为何不生效，还不得而知】
      */
     for ($i = 0; $i < $length; $i++) {
+        $size = mt_rand(26, 32);
         $x = 20 + ceil($width / $length) * $i;
-        $y = mt_rand(ceil($height / 3), $height - 15);
-        imagettftext($image, 32, mt_rand(-30, 30), $x, $y, randcolor($image), $fontFlie, $str[$i]);
+        $y = 35;
+        $text = mb_substr($str, $i, 1, 'utf-8');
+        imagettftext($image, $size, mt_rand(-15, 15), $x, $y, randcolor($image), 'C:/Windows/Fonts/simkai.TTF', $text);
     }
+
+    for ($i = 0; $i < 4; $i++) {
+        imagearc($image, mt_rand(0, 50), mt_rand(0, 50), 50, 50, mt_rand(0, 90), mt_rand(0, 90), randcolor($image));
+    }
+
     /**
      * 绘制干扰点
      */
