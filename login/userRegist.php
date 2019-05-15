@@ -6,14 +6,12 @@
  * Time: 13:44
  */
 require_once "MysqlConntect.php";
-$mysql = new mysqlConntect();
-$mysql->conntct();
-
 $username = $_POST['UserName'];
 $userPwd = $_POST['UserPassword'];
 $conformUserPwd = $_POST['ConformUserPassword'];
-$data = array("username" => $username, "userpwd" => $userPwd);
-$result = $mysql->insertValue("userinfo", $data);
+$conntct = mysqlConntect::getInstance();
+$sql = "insert into userinfo (0,'{$username}','{$userPwd}') ";
+$result = $conntct->sel4Sql($sql);
 if (mysqli_num_rows($result)) {
     echo "注册成功";
     header("Location:userLogin.html?" . $username);

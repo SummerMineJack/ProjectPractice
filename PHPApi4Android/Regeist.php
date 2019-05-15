@@ -5,15 +5,14 @@ require_once "../Smarty/html/SmartyConn.php";
 require "UserBean.php";
 
 
-$connect = new mysqlConntect();
-$connect->conntct();
+$connect = mysqlConntect::getInstance();
 
 
 /*
 * 首页接口
 * http://domain/hotgirl/callback.php?format=xml/json
 */
-$result = $connect->selAll();
+$result = $connect->sel4Sql("");
 while ($row = mysqli_fetch_row($result)) {
     $userbean = new UserBean();
     $userbean->userId = $row[0];

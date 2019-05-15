@@ -1,3 +1,5 @@
+<!--需要大量优化-->
+
 <html>
 <head>
     <meta charset="UTF-8">
@@ -87,7 +89,7 @@
         $(document).ready(function () {
             $.ajax({
                 async: true,
-                url: './selAll.php',
+                url: 'selAll.php',
                 type: 'POST',
                 dataType: "json",
                 success: function (result) {

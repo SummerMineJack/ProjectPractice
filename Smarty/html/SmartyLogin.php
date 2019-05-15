@@ -6,13 +6,11 @@
  * Time: 13:45
  */
 require_once "../../login/MysqlConntect.php";
-$mysql = new mysqlConntect();
-$mysql->conntct();
-
-
 $loginUserName = $_POST['username'];
 $loginUserPwd = $_POST['userpwd'];
-$result = $mysql->selValue("userinfo", $loginUserName, $loginUserPwd);
+$mysql = mysqlConntect::getInstance();
+$sql="select * from userinfo where username='{$loginUserName}' and userpassword='{$loginUserPwd}'";
+$result = $mysql->sel4Sql($sql);
 if (mysqli_num_rows($result)) {
     setcookie("user", $loginUserName);
 }

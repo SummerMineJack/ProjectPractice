@@ -88,8 +88,7 @@ class SessionUtil implements SessionHandlerInterface
     public function open($save_path, $name)
     {
         $this->lifeTime = get_cfg_var('session.gc_maxlifetime');
-        $this->connect = new mysqlConntect();
-        $this->connect->conntct();
+        $this->connect = mysqlConntect::getInstance();
         if ($this->connect) {
             return true;
         }

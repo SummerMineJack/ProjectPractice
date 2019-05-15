@@ -5,13 +5,12 @@
  * Date: 2019/5/8
  * Time: 14:58
  */
-require "../login/MysqlConntect.php";
-$connt = new mysqlConntect();
-$connt->conntct();
+require "../../login/MysqlConntect.php";
 $username = $_POST['username'];
 $password = md5($_POST['userpwd']);
-$authLogin = isset($_POST['authLogin']) ? $_POST['authLogin'] : "";
-$result = $connt->selValue("userinfo", $username, $password);
+$connt = mysqlConntect::getInstance();
+$sql = "select * from userinfo where username='{$username}' and userpassword='{$password}'";
+$result = $connt->sel4Sql($sql);
 if (mysqli_num_rows($result)) {
     if ($authLogin == 1) {
         $row = mysqli_fetch_assoc($result);

@@ -2,8 +2,7 @@
 session_start();
 print_r($_SESSION);
 require '../login/MysqlConntect.php';
-$connect = new mysqlConntect();
-$connect->conntct();
+$connect =mysqlConntect::getInstance();
 if (!isset($_COOKIE['username'])) {
     exit('<script>alert("请先登录");location.href="login.php";</script>');
 }
@@ -12,7 +11,7 @@ if (isset($_COOKIE['auth'])) {
     $resArr = explode(':', $auth);
     $userId = end($resArr);
     $sql = "select id ,username,userpassword from userinfo where id=$userId";
-    $result = $connect->sel4sql($sql);
+    $result = $connect->sel4Sql($sql);
     if (mysqli_num_rows($result)) {
         $row = mysqli_fetch_assoc($result);
         $username = $row['username'];
