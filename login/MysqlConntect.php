@@ -13,8 +13,8 @@ class mysqlConntect
     private static $user = 'root';
     private static $password = 'hj1649789..';
     private static $database = 'userinfo';
-//    private static $port = '8809';
-    private static $port = '3306';
+    private static $port = '8809';
+//    private static $port = '3306';
     private static $instance;
 
     private function __construct()
@@ -64,6 +64,14 @@ class mysqlConntect
     public function getCharset()
     {
         return mysqli_get_charset($this->mysqli);
+    }
+
+    /**
+     * 获取添加数据的id
+     */
+    public function getInsertId()
+    {
+        return mysqli_insert_id($this->mysqli);
     }
 
     /**
