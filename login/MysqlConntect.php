@@ -71,7 +71,8 @@ class mysqlConntect
      */
     public function getInsertId()
     {
-        return mysqli_insert_id($this->mysqli);
+
+        return $this->mysqli->insert_id();
     }
 
     /**
@@ -88,7 +89,7 @@ class mysqlConntect
      */
     public function sel4Sql($sql)
     {
-        $result = mysqli_query($this->mysqli, $sql);
+        $result = $this->mysqli->query($sql);
         return $result;
     }
 
