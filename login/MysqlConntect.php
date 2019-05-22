@@ -46,6 +46,15 @@ class mysqlConntect
         mysqli_query($this->mysqli, 'set names utf8');
     }
 
+    /**
+     * @return mixed
+     */
+    public function getMysqli()
+    {
+        return $this->mysqli;
+    }
+
+
 
     /**
      * 首先连接数据库
@@ -86,8 +95,9 @@ class mysqlConntect
 
     /**
      * 根据sql语句进行查询
+     * 防止sql注入
      */
-    public function sel4Sql($sql)
+    public function sel4Sql($sql,$datas=array())
     {
         $result = $this->mysqli->query($sql);
         return $result;

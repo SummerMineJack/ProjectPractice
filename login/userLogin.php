@@ -10,6 +10,8 @@ $loginUserName = $_POST['username'];
 $loginUserPwd = $_POST['userpwd'];
 $connect = mysqlConntect::getInstance();
 $sql = "select * from userinfo where username='{$loginUserName}' and userpassword='{$loginUserPwd}'";
+//防止sql注入
+
 $result = $connect->sel4Sql($sql);
 if (mysqli_num_rows($result)) {
     setcookie("user", $loginUserName);
