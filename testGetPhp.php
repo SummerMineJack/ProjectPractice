@@ -1,3 +1,7 @@
+<head>
+    <link href="bg1.jpg" type="image/x-icon" rel="shortcut icon"/>
+</head>
+
 <?php
 /**
  * Created by PhpStorm.

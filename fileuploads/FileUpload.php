@@ -6,14 +6,14 @@
  * Time: 10:56
  */
 //设置允许上传文件类型
-$fileTypes = array("jpg", "png", "jpeg", "gif");
+$fileTypes = array("jpg", "png", "jpeg", "gif", "pdf");
 //首先获取当前的文件名称
 $filename = $_FILES['file']['name'];
 //然后进行截取文件后缀名
 $fileEndName = explode(".", $filename);
 $lastFileEndName = end($fileEndName);
 echo $lastFileEndName;
-if ((($_FILES['file']['type'] == "image/jpg") || ($_FILES['file']['type'] == "image/png") || ($_FILES['file']['type'] == "image/jpeg") || ($_FILES['file']['type'] == "image/gif")) && in_array($lastFileEndName, $fileTypes)) {
+if (in_array($lastFileEndName, $fileTypes)) {
     if ($_FILES['file']['error'] > 0) {
         echo "上传文件出错：" . $_FILES['file']['error'];
     } else {
