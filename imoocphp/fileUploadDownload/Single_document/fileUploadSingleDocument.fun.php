@@ -16,7 +16,7 @@ function upload($fileInfo, $maxSize = 2097152, $flag = true, $fileUploadPath = '
     if ($fileInfo['error'] == UPLOAD_ERR_OK) {
         //判断文件的大小
         if ($fileInfo['size'] > $maxSize) {
-            exit("文件上传过大");
+            $msg="文件上传过大";
         }
         //判断文件上传类型
         $ext = pathinfo($fileInfo['name'], PATHINFO_EXTENSION);
