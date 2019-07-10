@@ -1,35 +1,39 @@
-<?php /** @noinspection ALL */
+<?php
+
 /**
- * Created by PhpStorm.
- * User: HuangJian
- * Date: 2019/7/9
- * Time: 16:40
+ * 构建上传文件信息
+ * @return unknown
  */
-function uploadFile()
-{
-    $i = 0;
-    foreach ($_FILES as $fileInfo) {
-        if (is_string($fileInfo['name'])) {
-            $files[$i] = $fileInfo;
+function getFiles(){
+    $i=0;
+    foreach($_FILES as $file){
+        if(is_string($file['name'])){
+            $files[$i]=$file;
             $i++;
-        } elseif (is_array($fileInfo['name'])) {
-            foreach ($fileInfo['name'] as $key => $val) {
-                $files[$i]['name'] = $fileInfo['name'][$key];
-                $files[$i]['type'] = $fileInfo['type'][$key];
-                $files[$i]['tmp_name'] = $fileInfo['tmp_name'][$key];
-                $files[$i]['error'] = $fileInfo['error'][$key];
-                $files[$i]['size'] = $fileInfo['size'][$key];
+        }elseif(is_array($file['name'])){
+            foreach($file['name'] as $key=>$val){
+                $files[$i]['name']=$file['name'][$key];
+                $files[$i]['type']=$file['type'][$key];
+                $files[$i]['tmp_name']=$file['tmp_name'][$key];
+                $files[$i]['error']=$file['error'][$key];
+                $files[$i]['size']=$file['size'][$key];
                 $i++;
             }
         }
     }
     return $files;
-}
 
-function uploadFiles($fileInfo,$path='./uploads',$flag=true,$maxSize=1048576,$allowExt=array('jpeg','jpg','png','gif')){
-    //$flag=true;
-    //$allowExt=array('jpeg','jpg','gif','png');
-    //$maxSize=1048576;//1M
+}
+/**
+ * 针对于单文件、多个单文件、多文件的上传
+ * @param array $fileInfo
+ * @param string $path
+ * @param string $flag
+ * @param number $maxSize
+ * @param array $allowExt
+ * @return string
+ */
+function uploadFile($fileInfo,$path='../uploads',$flag=true,$maxSize=1048576,$allowExt=array('jpeg','jpg','png','gif')){
     //判断错误号
     if($fileInfo['error']===UPLOAD_ERR_OK){
         //检测上传得到小
@@ -52,7 +56,6 @@ function uploadFiles($fileInfo,$path='./uploads',$flag=true,$maxSize=1048576,$al
             $res['mes']=$fileInfo['name'].'文件不是通过HTTP POST方式上传上来的';
         }
         if($res) return $res;
-        //$path='./uploads';
         if(!file_exists($path)){
             mkdir($path,0777,true);
             chmod($path,0777);
@@ -92,3 +95,6 @@ function uploadFiles($fileInfo,$path='./uploads',$flag=true,$maxSize=1048576,$al
         return $res;
     }
 }
+
+
+

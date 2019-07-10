@@ -22,15 +22,15 @@ if (in_array($lastFileEndName, $fileTypes)) {
         echo "上传文件大小：" . ($_FILES['file']['size']) . "kb<br>";
         echo "文件临时存储位置；" . $_FILES['file']['tmp_name'] . "<br>";
         //将上传的文件保存到特定的位置
-        $dir = iconv("UTF-8", "GBK", "upload");
+        $dir = iconv("UTF-8", "GBK", "upload.class");
         if (!file_exists($dir)) {
             mkdir($dir, 0777, true);
         }
-        if (file_exists("upload/" . $_FILES['file']['name'])) {
+        if (file_exists("upload.class/" . $_FILES['file']['name'])) {
             echo $_FILES['file']['name'] . "文件已存在";
         } else {
-            move_uploaded_file($_FILES['file']['tmp_name'], "upload/" . $_FILES['file']['name']);
-            echo "文件存储在" . "upload/" . $_FILES['file']['name'];
+            move_uploaded_file($_FILES['file']['tmp_name'], "upload.class/" . $_FILES['file']['name']);
+            echo "文件存储在" . "upload.class/" . $_FILES['file']['name'];
         }
     }
 } else if ($_FILES['file']['size'] > 2048000) {
