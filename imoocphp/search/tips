@@ -1,0 +1,29 @@
+SQL匹配模式
+1，使用sql匹配模式，不能使用操作符 = 或 ！=，而是使用操作符 LIKE 或 NOT LIKE
+2，使用sql匹配模式，mysql 提供2种通配符 ,% 表示任意数量的任意字符（其中包括0个）_ 表示任意单个字符
+3，使用sql匹配模式，如果匹配格式中不包含以上2种通配符中的任何一个，其查询意义等同于 = 或 ！=
+4，使用sql匹配模式，默认情况下是不区分大小写的
+
+#查询用户名以b开头的用户
+SELECT * FROM userinfo WHERE username LIKE 'b%'
+#查询用户名以g结尾的用户
+SELECT * FROM userinfo WHERE username LIKE '%k'
+#查询用户名包含o的用户
+SELECT * FROM userinfo WHERE username LIKE '%o%'
+#查询用户名长度为5的用户【下划线代表任意单个字符】
+SELECT * FROM userinfo WHERE username LIKE '_____'
+
+正则表达式模式匹配
+. 点 匹配任意单个字符
+* 星号 匹配0个或任意多个在它前面的字符：X* 匹配任何数量的x字符，[..] 匹配中括号中的任意字符，[abc] 匹配字符abc，^ 表示以某个字符或者字符串开始
+                                    $ 表示以某个字符或字符串结尾
+使用正则表达式的操作符是Regexp 或 not Regexp 类似于【like 或 not like 】
+
+#查询用户名以b开头的用户
+SELECT * FROM userinfo WHERE username REGEXP '^b'
+#查询用户名以g结尾的用户
+SELECT * FROM userinfo WHERE username REGEXP 'k$'
+#查询用户名包含o的用户
+SELECT * FROM userinfo WHERE username REGEXP '[o]'
+#查询用户名长度为5的用户【下划线代表任意单个字符】
+SELECT * FROM userinfo WHERE username REGEXP '^.....$'
