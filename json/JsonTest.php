@@ -15,14 +15,10 @@ class User {
     var $userNickName;
     var $userPhoneNumber;
 }
-
 $users = new User();
 $users->userName = "HuangJian";
 $users->userId = "97603";
 $users->userNickName = "SummerMineJack";
 $users->userPhoneNumber = "15871490754";
 $jsonEncode = json_encode($users);
-echo "json_encdoe：" . $jsonEncode;
-$newStuden = json_decode($jsonEncode, false);
-print PHP_EOL;
-echo "json_decode：" . $newStuden->userPhoneNumber;
+echo  $jsonEncode;

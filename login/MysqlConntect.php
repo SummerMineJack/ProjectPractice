@@ -55,7 +55,6 @@ class mysqlConntect
     }
 
 
-
     /**
      * 首先连接数据库
      */
@@ -97,7 +96,7 @@ class mysqlConntect
      * 根据sql语句进行查询
      * 防止sql注入
      */
-    public function sel4Sql($sql,$datas=array())
+    public function sel4Sql($sql, $datas = array())
     {
         $result = $this->mysqli->query($sql);
         return $result;
@@ -118,6 +117,14 @@ class mysqlConntect
             $row = false;
         }
         return $row;
+    }
+
+    /**
+     * 关闭连接释放内存
+     */
+    public function close()
+    {
+        $this->mysqli->close;
     }
 
 }
