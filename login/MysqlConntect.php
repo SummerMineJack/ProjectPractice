@@ -10,7 +10,7 @@ class mysqlConntect
 {
     private $mysqli;
     private static $host = 'localhost';
-    private static $user = 'root';
+    private static $user = 'huangjian';
     private static $password = 'hj1649789..';
     private static $database = 'userinfo';
     private static $port = '8809';

@@ -1,0 +1,13 @@
+1，恶意构造sql语句【select * from userinfo where id=1 or 1=1】
+   改变了原有sql语句的行为，通过以上的sql语句可以查到数据表中的所有数据
+   其含义是：sql语句未过滤直接拼接到sql语句当中，产生意外的行为，sql注入攻击
+
+2，如何进行sql注入
+    1，数字注入：直接将where 的查询条件永远返回为 true就相当于没有查询条件【select * from userinfo】
+    2，字符串注入：在sql语句中添加 单引号闭合sql语句，紧跟着#将后的语句进行注释
+
+3，如何防止sql注入
+    1，对输入的参数进行正则空值等校验
+    2，将特殊字符进行转义addslashes()、mysqli_real_escape_string($db,$params)
+    3，预编译模式防止sql注入
+       ①：使用？占位符的形式形成sql模版 select * from userinfo where username =? and password=?
