@@ -58,7 +58,7 @@ class PHPExcel_Writer_OpenDocument_MetaInf extends PHPExcel_Writer_OpenDocument_
             $objWriter->startElement('manifest:file-entry');
                 $objWriter->writeAttribute('manifest:full-path', '/');
                 $objWriter->writeAttribute('manifest:version', '1.2');
-                $objWriter->writeAttribute('manifest:media-type', 'application/vnd.oasis.opendocument.spreadsheet');
+                $objWriter->writeAttribute('manifest:media-type', 'app/vnd.oasis.opendocument.spreadsheet');
             $objWriter->endElement();
             $objWriter->startElement('manifest:file-entry');
                 $objWriter->writeAttribute('manifest:full-path', 'meta.xml');
